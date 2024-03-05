@@ -13,7 +13,7 @@ function aboutWeather() {
             ${header()}
             <main>
                 <h1>Peržiemojai žiemą, peržiemosi ir pavasarį.</h1>
-                <button>Geresnei nuotaikai!</button>
+                <a style="text-decoration: none; padding: 5px; border: 1px solid black" href="https://www.youtube.com/watch?v=HGj_9qCa2G8">Nespausk:)</a>
             </main>
         </body>
         </html>`;
