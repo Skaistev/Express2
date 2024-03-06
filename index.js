@@ -1,24 +1,28 @@
 console.clear();
 
 import express from 'express';
-import { homePage } from './pages/home.js';
-import { aboutPage } from './pages/about.js';
-import { contactUsPage } from './pages/contactUs.js';
-import { servicesPage } from './pages/services.js';
-import { page404 } from './pages/404.js';
-import { aboutWeather } from './pages/apieOra.js';
+import { PageHome } from './pages/PageHome.js';
+import { Page404 } from './pages/Page404.js';
+import { PageAbout } from './pages/PageAbout.js';
 
 const app = express();
-const port = 4820;
+const port = 4811;
 
-app.get('/', (req, res) => res.send(homePage()));
-app.get('/about', (req, res) => res.send(aboutPage()));
-app.get('/contact-us', (req, res) => res.send(contactUsPage()));
-app.get('/services', (req, res) => res.send(servicesPage()));
-app.get('/apieOra', (req, res) => res.send(aboutWeather()));
+app.use(express.static('static'));
+
+app.get('/', (req, res) => {
+    const page = new PageHome();
+    res.send(page.render());
+});
+
+app.get('/about', (req, res) => {
+    const page = new PageAbout();
+    res.send(page.render());
+});
 
 app.use((req, res, next) => {
-    res.status(404).send(page404());
+    const page = new Page404();
+    res.status(404).send(page.render());
 });
 
 app.listen(port, () => {
