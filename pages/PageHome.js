@@ -6,6 +6,7 @@ class PageHome extends PageTemplate {
     constructor() {
         super();
         this.pageTitle = 'Home';
+        this.page = "home";
     }
 
     main() {

@@ -4,6 +4,7 @@ class Page404 extends PageTemplate {
     constructor() {
         super();
         this.pageTitle = '404';
+        this.page = "404"
     }
 
     main() {
