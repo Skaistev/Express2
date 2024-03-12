@@ -6,6 +6,7 @@ import { PageAbout} from '../pages/PageAbout.js'
 import { PageServicesList} from '../pages/PageServicesList.js';
 import { PageServiceInner}  from '../pages/PageServiceInner.js'
 import { PageInnerText } from "../pages/PageInnerText.js";
+import { Operations } from "../pages/operations.js";
 
 
 const router = Router ();
@@ -33,6 +34,11 @@ router.get('/services/:serviceId', (req, res) => {
 
 router.get('/services/:serviceId/:Id', (req, res) => {
         const page = new PageInnerText(req.params);
+        res.send(page.render());
+    });
+
+    router.get('/services/:serviceId/:Id', (req, res) => {
+        const page = new Operations(req.params);
         res.send(page.render());
     });
     

@@ -7,6 +7,7 @@ class PageInnerText extends PageTemplate {
         this.pageTitle = 'Service inner';
         this.page = 'inner service';
         this.params = params;
+        console.log(params);
     }
 
     main() {

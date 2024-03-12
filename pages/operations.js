@@ -1,11 +1,15 @@
-class Operations {
-    constructor () {
-        this.page = '+';
+import { PageTemplate } from "../lib/PageTemplate.js";
+
+class Operations extends PageTemplate {
+    constructor (params) {
+        this.params = params;
+        console.log(params)
 
     }
 
-    operate (){
-        return `<h1>7+5=12</h1>`
+   main (){
+
+    `<h1>${this.params.id}</h1>`
     }
     
 }
