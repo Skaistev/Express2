@@ -12,23 +12,23 @@ import { Operations } from "../pages/operations.js";
 const router = Router ();
 
 router.get('/', (req, res) => {
-    const page = new PageHome();
+    const page = new PageHome(req.time);
     res.send(page.render());
 });
 
 
 router.get('/about', (req, res) => {
-    const page = new PageAbout();
+    const page = new PageAbout(req.time);
     res.send(page.render());
 });
 
 router.get('/services', (req, res) => {
-    const page = new PageServicesList();
+    const page = new PageServicesList(req.time);
     res.send(page.render());
 });
 
 router.get('/services/:serviceId', (req, res) => {
-    const page = new PageServiceInner(req.params);
+    const page = new PageServiceInner(req.params,req.time);
     res.send(page.render());
 });
 

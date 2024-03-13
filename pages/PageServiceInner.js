@@ -3,8 +3,8 @@ import { servicesInnerData } from "../data/servicesInnerData.js";
 import { PageTemplate } from "../lib/PageTemplate.js";
 
 class PageServiceInner extends PageTemplate {
-    constructor(params) {
-        super();
+    constructor(params,time) {
+        super(time);
         this.pageTitle = 'Service';
         this.page = 'services';
         this.params = params;

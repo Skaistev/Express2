@@ -2,8 +2,8 @@ import { servicesData } from "../data/servicesData.js";
 import { PageTemplate } from "../lib/PageTemplate.js";
 
 class PageServicesList extends PageTemplate {
-    constructor() {
-        super();
+    constructor(time) {
+        super(time);
         this.pageTitle = 'Services';
         this.page = 'services';
     }
