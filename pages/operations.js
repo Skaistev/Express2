@@ -13,9 +13,17 @@ console.log(typeof this.op);
     }
 
    main (){
+
+    if (isNaN(this.a)||isNaN(this.b)){
+        return `<h1 class="display-5 fw-bold">ivestas ne skaicius</h1>`
+    }
+
+    if (this.op !== '+'&& this.op !== '-'&& this.op !== '*'&&this.op !== '/'){
+        return `<h1 class="display-5 fw-bold">neteisingas operatorius</h1>`
+    }
     let count = 0;
 
-    if (this.op === '+'){ count = this.a + this.b} 
+    if (this.op === '+') { count = this.a + this.b} 
     if (this.op === '-') {count = this.a - this.b}
     if (this.op === '*') {count = this.a * this.b}
     if (this.op === '/') {count = this.a / this.b} 
