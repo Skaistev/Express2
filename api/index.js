@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { Operations } from '../pages/operations.js';
+import { formatTime } from "../lib/formatTime.js";
 
 const apiRouter = Router();
 
@@ -25,7 +26,7 @@ apiRouter.get ('/api/count/:first/:operator/:second', (req, res)=> {
 
 apiRouter.get ('/api/abbr', (req, res)=> {
 
-    res.send (`<h3>Iveskite varda ir pavarde</h3>`)
+    res.status(404).send (`<h3>Iveskite varda ir pavarde</h3>`)
     })
 
 apiRouter.get ('/api/abbr/:vardas', (req, res)=> {
@@ -34,14 +35,13 @@ apiRouter.get ('/api/abbr/:vardas', (req, res)=> {
    })
 
 apiRouter.get ('/api/abbr/:vardas/:pavarde', (req, res)=> {
- const a = req.params.vardas;
- const b = req.params.pavarde;
-
+ const a = req.params.vardas.trim();
+ const b = req.params.pavarde.trim();
  const j = parseFloat(a);
  const g = parseFloat(b);
 
  if (!isNaN(j)||!isNaN(g)){
-    return res.send ('ivestas ne zodis')
+    return res.status(400).send ('ivestas ne zodis')
  }
 
  const v = (a.toUpperCase().split(''))[0]+'.';
@@ -55,6 +55,8 @@ res.send (`<h1>${v} ${p}</h1>`)
 
 // kreipiantsi i konkretu url, grazinamas laikas: hh:mm:ss
 
+
+
 apiRouter.get ('/api/time', (req, res)=> {
 
     const time = new Date();
@@ -63,7 +65,7 @@ apiRouter.get ('/api/time', (req, res)=> {
     const sec = time.getSeconds(); 
 
 
-    res.send (`<h1>${val}val ${min}min ${sec}sec</h1>`)
+    res.send (`<h1>${formatTime(val)} val ${formatTime(min)} min ${formatTime(sec)} sec</h1>`)
     })
 
     
@@ -109,8 +111,7 @@ apiRouter.get ('/api/time-as-text', (req, res)=> {
     if(sec>10&&sec<20){sekundes=desimtys[sec-10]}
     if(sec>19){sekundes=simtai[secString[0]-1] +' '+ vienetai[secString[1]]}
 
-    // let valandosZodis = ''=1?valandosZodis="valanda":
-    // val<9&&val>1?valandosZodis="valandos":'valandŲ';
+
     
     
    console.log(sec);
