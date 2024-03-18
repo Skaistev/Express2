@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { Operations } from '../pages/operations.js';
 import { formatTime } from "../lib/formatTime.js";
+import { timeValueTitle } from "../lib/formatTimeAsText.js";
+import { capitalize } from "../lib/capitalize.js";
 
 const apiRouter = Router();
 
@@ -40,6 +42,8 @@ apiRouter.get ('/api/abbr/:vardas/:pavarde', (req, res)=> {
  const j = parseFloat(a);
  const g = parseFloat(b);
 
+ 
+ 
  if (!isNaN(j)||!isNaN(g)){
     return res.status(400).send ('ivestas ne zodis')
  }
@@ -115,7 +119,7 @@ apiRouter.get ('/api/time-as-text', (req, res)=> {
     
     
    console.log(sec);
-   res.send (`<h1>${valandos} valanda ${min===0?'': minutes + " minutes"} ${sec===0?'': sekundes + " sekundes"}</h1>`)
+   res.send (`<h1>${capitalize(valandos)} ${timeValueTitle(val,'h')} ${minutes} ${timeValueTitle(min,'m')} ${sekundes} ${timeValueTitle(sec,'s')}</h1>`)
 })
 
 
