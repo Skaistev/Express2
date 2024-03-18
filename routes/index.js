@@ -7,6 +7,7 @@ import { PageServicesList} from '../pages/PageServicesList.js';
 import { PageServiceInner}  from '../pages/PageServiceInner.js'
 import { PageInnerText } from "../pages/PageInnerText.js";
 import { Operations } from "../pages/operations.js";
+import { PageCalc } from "../pages/pageCalc.js";
 
 
 const router = Router ();
@@ -24,6 +25,11 @@ router.get('/about', (req, res) => {
 
 router.get('/services', (req, res) => {
     const page = new PageServicesList(req.time);
+    res.send(page.render());
+});
+
+router.get('/calc', (req, res) => {
+    const page = new PageCalc();
     res.send(page.render());
 });
 
